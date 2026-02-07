@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Wedding - Mohamed Tunis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: #3D2E26; color: #F5EDE6; line-height: 1.6; }
+        .serif { font-family: Georgia, serif; font-style: italic; }
+        
+        .logo { position: absolute; top: 20px; left: 20px; height: 45px; filter: brightness(0) invert(1); z-index: 100; }
+        
+        .hero { position: relative; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; background: linear-gradient(to bottom, rgba(61,46,38,0.4), #3D2E26), url('https://i.imgur.com/LQwnZcj.jpeg '); background-size: cover; background-position: center; }
+        
+        h1 { font-size: clamp(40px, 8vw, 80px); font-weight: 300; line-height: 1; margin-bottom: 20px; }
+        .accent { color: #E6B7B3; }
+        
+        .designer { position: absolute; bottom: 30px; right: 30px; text-align: right; }
+        .designer p:first-child { color: #D8C1A1; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; }
+        .designer p:last-child { font-family: Georgia, serif; font-style: italic; font-size: 20px; }
+        
+        section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; position: relative; }
+        
+        .section-title { color: #D8C1A1; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; text-align: center; margin-bottom: 40px; }
+        
+        .colors { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 800px; margin: 0 auto; }
+        @media(min-width: 768px) { .colors { grid-template-columns: repeat(5, 1fr); } }
+        
+        .color-box { background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; backdrop-filter: blur(10px); }
+        .color-swatch { height: 120px; }
+        .color-info { padding: 15px; }
+        .color-name { font-size: 10px; color: #D8C1A1; text-transform: uppercase; letter-spacing: 1px; }
+        .color-hex { font-family: monospace; font-size: 11px; color: #fff; margin-top: 4px; }
+        
+        .gallery { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        @media(min-width: 768px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+        @media(min-width: 1024px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+        
+        .img-card { position: relative; height: 280px; background: #2A1F1A; border-radius: 12px; overflow: hidden; }
+        .img-card.large { min-height: 350px; }
+        @media(min-width: 1024px) { .img-card.large { grid-column: span 2; grid-row: span 2; min-height: 575px; } }
+        .img-card.wide { grid-column: span 1; }
+        @media(min-width: 768px) { .img-card.wide { grid-column: span 2; } }
+        
+        .img-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .img-card:hover img { transform: scale(1.05); }
+        
+        .img-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(to top, rgba(62,46,38,0.95), transparent); opacity: 0; transition: opacity 0.3s; }
+        .img-card:hover .img-overlay { opacity: 1; }
+        .img-title { font-family: Georgia, serif; font-style: italic; color: #F5EDE6; font-size: 18px; }
+        
+        .materials { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: center; max-width: 900px; margin: 0 auto; }
+        @media(min-width: 768px) { .materials { grid-template-columns: repeat(3, 1fr); } }
+        
+        .material { padding: 30px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(216,193,161,0.2); transition: all 0.3s; }
+        .material:hover { border-color: rgba(216,193,161,0.4); transform: translateY(-5px); }
+        .material-icon { font-size: 40px; margin-bottom: 15px; }
+        .material h3 { font-family: Georgia, serif; margin-bottom: 10px; color: #D8C1A1; }
+        .material p { color: #A89080; font-size: 14px; }
+        
+        footer { padding: 60px 20px; border-top: 1px solid rgba(216,193,161,0.2); background: #2A1F1A; text-align: center; }
+        .footer-logo { height: 50px; filter: brightness(0) invert(1); margin-bottom: 30px; opacity: 0.9; }
+        .footer-designer p:first-child { color: #D8C1A1; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; }
+        .footer-designer p:last-child { font-family: Georgia, serif; font-style: italic; font-size: 28px; margin: 10px 0; color: #F5EDE6; }
+        .copyright { color: #8B6F5A; font-size: 11px; margin-top: 30px; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero" style="max-width: 100%; padding: 0;">
+        <img src="https://i.imgur.com/uJqy10F.jpeg " class="logo" alt="Logo">
+        
+        <div style="z-index: 10;">
+            <p style="color: #D8C1A1; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px;" class="fade-in">Wedding Design</p>
+            <h1 class="fade-in"><span style="color: #F5EDE6;">Modern</span><br><span class="accent serif">Elegance</span></h1>
+            <p style="max-width: 500px; color: #D8C1A1; font-size: 16px; margin: 0 auto;" class="fade-in">Contemporary luxury meets timeless romance</p>
+        </div>
+        
+        <div class="designer fade-in">
+            <p>Designed by</p>
+            <p>Mohamed Tunis</p>
+        </div>
+    </section>
+
+    <!-- CONCEPT -->
+    <section>
+        <img src="https://i.imgur.com/uJqy10F.jpeg " class="logo" style="opacity: 0.5;" alt="Logo">
+        <p class="section-title fade-in">Design Concept</p>
+        <p class="serif fade-in" style="font-size: clamp(18px, 3vw, 24px); text-align: center; max-width: 700px; margin: 0 auto; color: #D8C1A1; line-height: 1.7;">
+            Clean lines embrace romantic sophistication. A celebration of contemporary architecture and curated intimacy.
+        </p>
+    </section>
+
+    <!-- COLORS -->
+    <section style="background: rgba(0,0,0,0.2);">
+        <img src="https://i.imgur.com/uJqy10F.jpeg " class="logo" style="opacity: 0.5;" alt="Logo">
+        <p class="section-title fade-in">Color Palette</p>
+        
+        <div class="colors">
+            <div class="color-box fade-in">
+                <div class="color-swatch" style="background: #C58A82;"></div>
+                <div class="color-info">
+                    <p class="color-name">Terracotta</p>
+                    <p class="color-hex">#C58A82</p>
+                </div>
+            </div>
+            <div class="color-box fade-in" style="transition-delay: 0.1s;">
+                <div class="color-swatch" style="background: #9E5F55;"></div>
+                <div class="color-info">
+                    <p class="color-name">Burnt Sienna</p>
+                    <p class="color-hex">#9E5F55</p>
+                </div>
+            </div>
+            <div class="color-box fade-in" style="transition-delay: 0.2s;">
+                <div class="color-swatch" style="background: #D8C1A1;"></div>
+                <div class="color-info">
+                    <p class="color-name">Sand</p>
+                    <p class="color-hex">#D8C1A1</p>
+                </div>
+            </div>
+            <div class="color-box fade-in" style="transition-delay: 0.3s;">
+                <div class="color-swatch" style="background: #8B6F5A;"></div>
+                <div class="color-info">
+                    <p class="color-name">Taupe</p>
+                    <p class="color-hex">#8B6F5A</p>
+                </div>
+            </div>
+            <div class="color-box fade-in" style="transition-delay: 0.4s;">
+                <div class="color-swatch" style="background: #E6B7B3;"></div>
+                <div class="color-info">
+                    <p class="color-name">Dusty Rose</p>
+                    <p class="color-hex">#E6B7B3</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section>
+        <img src="https://i.imgur.com/uJqy10F.jpeg " class="logo" style="opacity: 0.5;" alt="Logo">
+        <p class="section-title fade-in">Visual Journey</p>
+        
+        <div class="gallery">
+            <div class="img-card large fade-in">
+                <img src="https://i.imgur.com/XwgYozA.jpeg " alt="Ceremony">
+                <div class="img-overlay"><p class="img-title">The Ceremony</p></div>
+            </div>
+            <div class="img-card fade-in" style="transition-delay: 0.1s;">
+                <img src="https://i.imgur.com/Ui4AGz3.jpeg " alt="Florals">
+                <div class="img-overlay"><p class="img-title">Botanical Art</p></div>
+            </div>
+            <div class="img-card fade-in" style="transition-delay: 0.2s;">
+                <img src="https://i.imgur.com/wXsL5h1.jpeg " alt="Details">
+                <div class="img-overlay"><p class="img-title">Tablescapes</p></div>
+            </div>
+            <div class="img-card wide fade-in" style="transition-delay: 0.1s;">
+                <img src="https://i.imgur.com/4wrklvE.jpeg " alt="Venue">
+                <div class="img-overlay"><p class="img-title">The Space</p></div>
+            </div>
+            <div class="img-card fade-in" style="transition-delay: 0.2s;">
+                <img src="https://i.imgur.com/tSXMptD.jpeg " alt="Light">
+                <div class="img-overlay"><p class="img-title">Ambient Light</p></div>
+            </div>
+            <div class="img-card fade-in" style="transition-delay: 0.3s;">
+                <img src="https://i.imgur.com/OxqXNEu.jpeg " alt="Reception">
+                <div class="img-overlay"><p class="img-title">Celebration</p></div>
+            </div>
+            <div class="img-card wide fade-in" style="transition-delay: 0.1s;">
+                <img src="https://i.imgur.com/euI6Im3.jpeg " alt="Dance">
+                <div class="img-overlay"><p class="img-title">First Dance</p></div>
+            </div>
+            <div class="img-card fade-in" style="transition-delay: 0.2s;">
+                <img src="https://i.imgur.com/VOve77v.jpeg " alt="Cake">
+                <div class="img-overlay"><p class="img-title">Sweet Moments</p></div>
+            </div>
+            <div class="img-card fade-in" style="transition-delay: 0.3s;">
+                <img src="https://i.imgur.com/uBkYJ3c.jpeg " alt="Guests">
+                <div class="img-overlay"><p class="img-title">Togetherness</p></div>
+            </div>
+            <div class="img-card fade-in" style="transition-delay: 0.1s;">
+                <img src="https://i.imgur.com/V5iVp3c.jpeg " alt="Exit">
+                <div class="img-overlay"><p class="img-title">New Beginnings</p></div>
+            </div>
+            <div class="img-card wide fade-in" style="grid-column: 1 / -1; height: 350px; transition-delay: 0.2s;">
+                <img src="https://i.imgur.com/LQwnZcj.jpeg " alt="Vision">
+                <div class="img-overlay"><p class="img-title" style="font-size: 28px;">Modern Love Story</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATERIALS -->
+    <section style="background: rgba(0,0,0,0.2);">
+        <img src="https://i.imgur.com/uJqy10F.jpeg " class="logo" style="opacity: 0.5;" alt="Logo">
+        <p class="section-title fade-in">Materials</p>
+        
+        <div class="materials">
+            <div class="material fade-in">
+                <div class="material-icon">🏺</div>
+                <h3>Terracotta</h3>
+                <p>Earthy ceramics and clay accents</p>
+            </div>
+            <div class="material fade-in" style="transition-delay: 0.1s;">
+                <div class="material-icon">🌸</div>
+                <h3>Dried Florals</h3>
+                <p>Pampas grass and muted botanicals</p>
+            </div>
+            <div class="material fade-in" style="transition-delay: 0.2s;">
+                <div class="material-icon">🕯️</div>
+                <h3>Warm Light</h3>
+                <p>Amber candles and soft glow</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <img src="https://i.imgur.com/uJqy10F.jpeg " class="footer-logo" alt="Logo">
+        <div class="footer-designer">
+            <p>Designed by</p>
+            <p>Mohamed Tunis</p>
+        </div>
+        <p style="color: #8B6F5A; font-size: 12px; text-transform: uppercase; letter-spacing: 2px;">Wedding Design & Styling</p>
+        <p class="copyright">Modern Elegance — Wedding Proposal</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
